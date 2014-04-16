@@ -109,12 +109,14 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\
 set showmatch
 set matchtime=5
 "set scrolloff=3
-set smartindent
-set foldenable
-set foldmethod=marker
-set foldlevel =1
+"set smartindent
+"set foldenable
+"set foldmethod=marker
+"set foldmethod=expr
+"set foldlevel =1
 set cursorline
 set cursorcolumn
+set cmdheight=2
 set runtimepath +=/tmp/doc
 set fdm=indent
 highlight Cursorcolumn guibg=green ctermbg=darkgray ctermfg=white  
@@ -124,7 +126,7 @@ au BufRead,BufNewFile *.lbi set ft=html
 color evening
 "set guioptions-=m
 set guioptions-=T
-set guifont=文泉驿等宽正黑\ Bold\ 12
+"set guifont=文泉驿等宽正黑\ Bold\ 12
 nnoremap <cw> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 set langmenu=zh_CN.UTF-8
 source $VIMRUNTIME/delmenu.vim
@@ -164,3 +166,19 @@ func SetTitle()
     endif
     autocmd BufNewFile * normal G
 endfunc
+call pathogen#infect()
+set guifont=PowerlineSymbols\ for\ Powerline
+set nocompatible
+set t_Co=256
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_stl_path_style = 'full'
+"autocmd vimenter * NERDTree
+map <F2> :NERDTreeToggle<CR>
+let NERDTreeQuitOnOpen = 1
+let NERDTreeShowBookmarks=1
+:set scrolloff=21 
+:nnoremap <F5> "=strftime("%c")<CR>gP
+:inoremap <F5> <C-R>=strftime("%c")<CR>
+:nnoremap <C-Z> :set nonu<CR>
+:nnoremap <C-X> :set nu<CR>
+:nnoremap cc d$<CR>
