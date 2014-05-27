@@ -43,8 +43,8 @@ hi FoldColumn term=standout ctermbg=LightGrey ctermfg=DarkBlue guibg=Grey guifg=
 hi DiffAdd term=bold ctermbg=DarkBlue guibg=DarkBlue
 hi DiffChange term=bold ctermbg=DarkMagenta guibg=DarkMagenta
 hi DiffDelete term=bold ctermfg=Blue ctermbg=DarkCyan gui=bold guifg=Blue guibg=DarkCyan
-hi CursorColumn term=bold ctermbg=blue guibg=grey40
-hi CursorLine ctermbg=lightblue guibg=grey40 term=bold cterm=NONE
+hi CursorColumn term=bold  guibg=grey40
+hi CursorLine ctermbg=Grey ctermfg=DarkGreen guibg=grey40 term=bold cterm=NONE
 
 " Groups for syntax highlighting
 hi Constant term=underline ctermfg=Magenta guifg=#ffa0a0 guibg=grey5

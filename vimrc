@@ -134,7 +134,7 @@ source $VIMRUNTIME/menu.vim
 set imcmdline
 au FileType php setlocal dict+=/usr/local/nginx/html/php_funclist.txt
 au BufRead,BufNewFile *.go set filetype=go
-autocmd BufNewFile /usr/local/nginx/html/weibo.eswine.com/*.php,/usr/local/nginx/html/weibo.eswine.com/*.js,/usr/local/nginx/html/weibo.eswine.com/*.html exec ":call SetTitle()"
+"autocmd BufNewFile /usr/local/nginx/html/weibo.eswine.com/*.php,/usr/local/nginx/html/weibo.eswine.com/*.js,/usr/local/nginx/html/weibo.eswine.com/*.html exec ":call SetTitle()"
 func SetTitle()
     if &filetype == 'php' || &filetype == 'javascript'
         call setline(1, "<?php")
@@ -180,5 +180,8 @@ let NERDTreeShowBookmarks=1
 :nnoremap <F5> "=strftime("%c")<CR>gP
 :inoremap <F5> <C-R>=strftime("%c")<CR>
 :nnoremap <C-Z> :set nonu<CR>
-:nnoremap <C-X> :set nu<CR>
+":nnoremap <C-X> :set nu<CR>
 :nnoremap cc d$<CR>
+:nnoremap cp :vsplit<CR>
+au InsertLeave *.php,*.js,*.sh,*.py write
+
