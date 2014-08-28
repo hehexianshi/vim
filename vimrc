@@ -62,7 +62,8 @@ endif
 "PHP Auto Completion
 "
 set dictionary+=./*
-set dictionary+=/home/chopin/Code/php_function_list
+set dictionary+=/usr/local/nginx/html/php_funclist.txt
+set dictionary+=/opt/go/go/api/go1.txt
 set complete+=k
 function! InsertTabWrapper()
     let col=col('.')-1
@@ -134,6 +135,7 @@ source $VIMRUNTIME/menu.vim
 set imcmdline
 au FileType php setlocal dict+=/usr/local/nginx/html/php_funclist.txt
 au BufRead,BufNewFile *.go set filetype=go
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 "autocmd BufNewFile /usr/local/nginx/html/weibo.eswine.com/*.php,/usr/local/nginx/html/weibo.eswine.com/*.js,/usr/local/nginx/html/weibo.eswine.com/*.html exec ":call SetTitle()"
 func SetTitle()
     if &filetype == 'php' || &filetype == 'javascript'
@@ -180,8 +182,9 @@ let NERDTreeShowBookmarks=1
 :nnoremap <F5> "=strftime("%c")<CR>gP
 :inoremap <F5> <C-R>=strftime("%c")<CR>
 :nnoremap <C-Z> :set nonu<CR>
-":nnoremap <C-X> :set nu<CR>
+:nnoremap <C-X> :set nu<CR>
 :nnoremap cc d$<CR>
 :nnoremap cp :vsplit<CR>
-au InsertLeave *.php,*.js,*.sh,*.py write
-
+"au InsertLeave *.php,*.js,*.sh,*.py write
+map <C-J> :!/usr/local/php/bin/php -l %<CR>
+nmap mm :%s/\r//g<cr>
