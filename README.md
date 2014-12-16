@@ -1,8 +1,7 @@
 vim
-===
+===============
 
-```go```
-### use
+### go
 >终端
 >><pre>
 export GOROOT=/usr/local/go
