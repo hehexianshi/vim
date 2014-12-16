@@ -46,4 +46,5 @@ filetype plugin on
 使用<C-x><C-o>
 </pre>
 
+![](1.png)
 vimrc
