@@ -1,7 +1,7 @@
 vim
-===
+===============
 
-```go```
+### go
 >终端
 >><pre>
 export GOROOT=/usr/local/go
@@ -26,7 +26,7 @@ syntax on
 >vim gocode
 >><pre>
 go get -u github.com/nsf/gocode
-<pre>
+</pre>
 >><pre>
 if exists("g:did_load_filetypes")
     filetype off 
