@@ -4,13 +4,13 @@ endif
 
 set nocompatible 
 filetype off
-set rtp+=/home/lidong/.vim/bundle/vundle/
+set rtp+=/Users/xielily/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 filetype plugin indent on
 syntax on
 
-set tags=tags
+set tags=tags;
 
 set nocompatible	" Use Vim defaults (much better!)
 set bs=indent,eol,start		" allow backspacing over everything in insert mode
@@ -53,10 +53,6 @@ if &term=="xterm"
      set t_Sf=[3%dm
 endif
 
-"PHP Auto Completion
-"
-set dictionary+=./*
-set complete+=k
 function! InsertTabWrapper()
     let col=col('.')-1
     if !col || getline('.')[col-1] !~ '\k'
@@ -101,12 +97,6 @@ set shortmess=atI
 set fillchars=vert:\ ,stl:\ ,stlnc:\
 set showmatch
 set matchtime=5
-"set scrolloff=3
-"set smartindent
-"set foldenable
-"set foldmethod=marker
-"set foldmethod=expr
-"set foldlevel =1
 set cursorline
 set cursorcolumn
 set cmdheight=2
@@ -115,26 +105,12 @@ set fdm=indent
 highlight Cursorcolumn guibg=green ctermbg=darkgray ctermfg=white  
 set autochdir
 au BufRead,BufNewFile *.lbi set ft=html
-"colorscheme mycolor
-"color evening
 color atom-dark
-"set guioptions-=m
 set guioptions-=T
-"set guifont=文泉驿等宽正黑\ Bold\ 12
-nnoremap <cw> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 set langmenu=zh_CN.UTF-8
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim 
 set imcmdline
-"set tags=/opt/www/nginx-1.9.5/tags
-"set tags=/opt/www/php-7.0.0alpha1/tags
-"set tags=/opt/go/mytext/codis/tags
-"set tags=/opt/pecl/swoole-src/tags
-"set tags=/opt/www/redis-2.8.2/src/tags
-"set tags=/opt/www/swoole-src/tags
-"set tags=/opt/www/php-7.0.0/tags
-set tags=/opt/www/redis-3.0.0/src/tags
-"set tags=/opt/pecl/swoole-src/tags
 au FileType php setlocal dict+=/usr/local/nginx/html/php_funclist.txt
 au BufRead,BufNewFile *.go set filetype=go
 "set dictionary+=/opt/go/go/api/go1.txt
@@ -142,64 +118,34 @@ au FileType go setlocal dict+=/opt/go/go/api/go1.txt
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 au BufNewFile,BufReadPost *.js setl shiftwidth=2 expandtab
 "autocmd BufNewFile /usr/local/nginx/html/sale/*.php exec ":call SetTitle()"
-func SetTitle()
-    if &filetype == 'php' 
-        call setline(1, "<?php")
-        call append(line("."), "\/**")
-        call append(line(".")+1, " * @file : ".expand("%"))
-        call append(line(".")+2, " *")
-        call append(line(".")+3, " * @brief")
-        call append(line(".")+4, " *")
-        call append(line(".")+5, " * Copyright(C) 2012 http://1905.com, Inc. ")
-        call append(line(".")+6, " *")
-        call append(line(".")+7, " * @version $Id$")
-        call append(line(".")+8, " *")
-        call append(line(".")+9, " * @author lidong Dong.li@1905.com")
-        call append(line(".")+10, " * @date ".strftime("%c"))
-        call append(line(".")+11, " */")
-    elseif &filetype == 'html'
-        call setline(1, "<!--")
-        call append(line("."), " * @file : ".expand("%"))
-        call append(line(".")+1, " *")
-        call append(line(".")+2, " * @brief")
-        call append(line(".")+3, " *")
-        call append(line(".")+5, " *")
-        call append(line(".")+6, " * @version $Id$")
-        call append(line(".")+7, " *")
-        call append(line(".")+8, " * @author lidong zhubaiying@gmail.com")
-        call append(line(".")+9, " * @date ".strftime("%c"))
-        call append(line(".")+10, " -->")
-    endif
-    autocmd BufNewFile * normal G
-endfunc
-call SetTitle()
 call pathogen#infect()
 set guifont=PowerlineSymbols\ for\ Powerline
 set nocompatible
 set t_Co=256
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'full'
-"autocmd vimenter * NERDTree
-map <F2> :NERDTreeToggle<CR>
-"let NERDTreeQuitOnOpen = 1
-"let NERDTreeShowBookmarks=1
 :set scrolloff=21 
-:nnoremap <F5> "=strftime("%c")<CR>gP
-:nnoremap q :q<CR>
-:inoremap <F5> <C-R>=strftime("%c")<CR>
-:nnoremap <C-Z> :set nonu<CR>
-:nnoremap <C-X> :set nu<CR>
-:nnoremap cc d$
-":nnoremap <C-A> <C-x><C-o>
-:nnoremap cp :vsplit<CR>
+
+nnoremap <cw> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+nnoremap <F5> "=strftime("%c")<CR>gP
+nnoremap q :q<CR>
+inoremap <F5> <C-R>=strftime("%c")<CR>
+nnoremap <C-Z> :set nonu<CR>
+nnoremap <C-X> :set nu<CR>
+nnoremap cc d$
+nnoremap cp :vsplit<CR>
+nnoremap tt :Tabularize /=<CR>
+nnoremap ty :Tabularize /=><CR>
+
+map <F2> :NERDTreeToggle<CR>
+map <F3> :!go153 run %<CR>
 nmap <F4> <Esc>:tabnext<CR>
-"au InsertLeave *.php,*.js,*.sh,*.py write
+imap <F8> <Esc>:w<CR>
+map <F9> :!/opt/www/go/bin/go run %<CR>
 map <C-J> :!/usr/local/php/bin/php -l %<CR>
 imap <C-A> <C-x><C-o>
-imap <F8> <Esc>:w<CR>
-map <F3> :!go153 run %<CR>
-map <F9> :!/opt/www/go/bin/go run %<CR>
 nmap mm :%s/\r//g<cr>
+
 if exists("g:did_load_filetypes")
     filetype off 
     filetype plugin indent off 
@@ -211,5 +157,3 @@ syntax on
 autocmd FileType go153 autocmd BufWritePre <buffer> Fmt
 autocmd BufWritePost,FileWritePost *.php :!/usr/bin/php -l %
 filetype plugin on
-nnoremap tt :Tabularize /=<CR>
-nnoremap ty :Tabularize /=><CR>
